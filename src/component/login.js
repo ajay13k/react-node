@@ -36,8 +36,9 @@ function Login() {
     e.preventDefault();
      await axios.post(`${API.login}`, data)
      .then((response)=>{
-        if(response.data.firstName){
-        localStorage.setItem("token", JSON.stringify(response.data));
+        if(response.data.token){
+        localStorage.setItem("user", JSON.stringify(response.data));
+        localStorage.setItem("token", JSON.stringify(response.data.token));
         navigate("/")
         } else { 
            alert("wrong deadsdf")

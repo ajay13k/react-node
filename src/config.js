@@ -1,4 +1,4 @@
-export const BASE_URL = "http://localhost:3200";
+export const BASE_URL = "http://localhost:3400";
 
 export const API = {
   signup: `${BASE_URL}/signup`,
