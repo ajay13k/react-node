@@ -14,10 +14,10 @@ import {
   Heading,
   Text,
   useColorModeValue,
-  Link,
 } from "@chakra-ui/react";
 import { API } from "../config";
 import axios from "axios";
+import { Link } from "react-router-dom";
 function Signup() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -25,12 +25,12 @@ function Signup() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const auth = localStorage.getItem("token");
-    if (auth) {
-      navigate("/");
-    }
-  }, []);
+  // useEffect(() => {
+  //   const auth = localStorage.getItem("token");
+  //   if (auth) {
+  //     navigate("/login");
+  //   }
+  // }, []);
 
   const item = {
     firstName: firstName,
@@ -44,8 +44,8 @@ function Signup() {
       .post(`${API.signup}`, item)
       .then((response) => {
         if (response) {
-          localStorage.setItem("token", JSON.stringify(response.data));
-          window.location = "/";
+          // localStorage.setItem("token", JSON.stringify(response.data));
+          navigate("/login");
         }
       })
 
@@ -139,7 +139,7 @@ function Signup() {
                 </Stack>
                 <Stack pt={6}>
                   <Text align={"center"}>
-                    Already a user? <Link color={"blue.400"}>Login</Link>
+                    Already a user? <span style={{color: "#0066ff"}}><Link to="/login">Login</Link></span>
                   </Text>
                 </Stack>
               </Stack>
